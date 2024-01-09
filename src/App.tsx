@@ -18,8 +18,8 @@ function App() {
   };
   
 
-  const updateTodo = (id: number, title: Todo) => {
-    setTodos((prev) => prev.map((prevTodo) => (prevTodo.id === id ? title : prevTodo)));
+  const updateTodo = (id: number, updatedTodo: Todo) => {
+    setTodos((prev) => prev.map((prevTodo) => (prevTodo.id === id ? updatedTodo : prevTodo)));
   };
 
   const deleteTodo = (id: number) => {
@@ -36,7 +36,7 @@ function App() {
   
 
   useEffect(() => {
-    const storedTodos = JSON.parse(localStorage.getItem("todos") || '{}') as Todo[];
+    const storedTodos = JSON.parse(localStorage.getItem("todos") || '[]') as Todo[];
   
     if (storedTodos && storedTodos.length > 0) {
       setTodos(storedTodos);
